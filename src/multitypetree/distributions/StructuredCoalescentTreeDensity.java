@@ -51,24 +51,29 @@ public class StructuredCoalescentTreeDensity extends MultiTypeTreeDistribution {
     protected MultiTypeTree mtTree;
     protected boolean checkValidity;
 
-    private enum SCEventKind {
+    protected enum SCEventKind {
         COALESCE, MIGRATE, SAMPLE
-    };
+    }
 
-    private class SCEvent {
+    protected class SCEvent {
         double time;
         int type, destType;
         SCEventKind kind;
         Node node;
     }
-    private List<SCEvent> eventList;
-    private List<Integer[]> lineageCountList;
+    protected List<SCEvent> eventList;
+    protected List<Integer[]> lineageCountList;
 
     // Empty constructor as required:
-    public StructuredCoalescentTreeDensity() { };
+    public StructuredCoalescentTreeDensity() {
+
+        super();
+
+    }
 
     @Override
     public void initAndValidate() {
+
         migrationModel = migrationModelInput.get();
         mtTree = mtTreeInput.get();
         checkValidity = checkValidityInput.get();
